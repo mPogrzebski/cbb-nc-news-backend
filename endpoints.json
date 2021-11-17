@@ -1,0 +1,98 @@
+{
+  "GET /api": {
+    "description": "serves up a json representation of all the available endpoints of the api"
+  },
+  "GET /api/topics": {
+    "description": "Serves an array of all topics",
+    "queries": [],
+    "exampleResponse": {
+      "topics": [{ "slug": "football", "description": "Footie!" }]
+    }
+  },
+  "GET /api/articles": {
+    "description": "Serves an array of all articles",
+    "queries": ["author", "topic", "sort_by", "order"],
+    "exampleResponse": {
+      "articles": [
+        {
+          "article_id": 1,
+          "title": "Seafood substitutions are increasing",
+          "topic": "cooking",
+          "author": "weegembump",
+          "body": "Text from the article..",
+          "created_at": 1527695953341,
+          "votes": 0,
+          "comment_count": "11"
+        }
+      ]
+    }
+  },
+  "GET /api/articles/:article_id": {
+    "description": "Serves an array of all articles",
+    "params": ["article_id"],
+    "exampleResponse": {
+      "articles": [
+        {
+          "article_id": 1,
+          "title": "Seafood substitutions are increasing",
+          "topic": "cooking",
+          "author": "weegembump",
+          "body": "Text from the article..",
+          "created_at": 1527695953341,
+          "votes": 0,
+          "comment_count": "11"
+        }
+      ]
+    }
+  },
+  "GET /api/articles/:article_id/comments": {
+    "description": "Serves an array of all comments from specific article",
+    "params": ["article_id"],
+    "exampleResponse": {
+      "comments": [
+        {
+          "comment_id": 31,
+          "body": "Sit sequi odio suscipit. Iure quisquam qui alias distinctio eos officia enim aut sit. Corrupti ut praesentium ut iste earum itaque qui. Dolores in ab rerum consequuntur. Id ab aliquid autem dolore.",
+          "votes": 11,
+          "author": "weegembump",
+          "article_id": 1,
+          "created_at": "2020-09-25T23:00:00.000Z"
+        }
+      ]
+    }
+  },
+  "PATCH /api/articles/:article_id/": {
+    "description": "Updates article's vote count",
+    "params": ["article_id"],
+    "examplePayload": { "inc_votes": 10 },
+    "exampleResponse": {
+      "articles": [
+        {
+          "comment_id": 31,
+          "body": "Sit sequi odio suscipit. Iure quisquam qui alias distinctio eos officia enim aut sit. Corrupti ut praesentium ut iste earum itaque qui. Dolores in ab rerum consequuntur. Id ab aliquid autem dolore.",
+          "votes": 11,
+          "author": "weegembump",
+          "article_id": 1,
+          "created_at": "2020-09-25T23:00:00.000Z"
+        }
+      ]
+    }
+  },
+  "POST /api/articles/:article_id/comments": {
+    "description": "Posts a comment",
+    "params": ["article_id"],
+    "examplePayload": { "username": "weegembump", "body": "bla bla bla" },
+    "exampleResponse": {
+      "comment": [
+        {
+          "comment_id": 31,
+          "body": "Sit sequi odio suscipit. Iure quisquam qui alias distinctio eos officia enim aut sit. Corrupti ut praesentium ut iste earum itaque qui. Dolores in ab rerum consequuntur. Id ab aliquid autem dolore.",
+          "votes": 11,
+          "author": "weegembump",
+          "article_id": 1,
+          "created_at": "2020-09-25T23:00:00.000Z"
+        }
+      ]
+    }
+  }
+}
